@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+}
+
+header{
+    background-color: lightskyblue;
+    height: 100px;
+    border-bottom: 2px solid;
+    padding: 20px;
+}
+
+h1 {
+    width: fit-content;
+    font-weight: bolder;
+    font-size: 30pt;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: italic;
+    text-transform: uppercase;
+    margin: 0 auto; 
+}
+
+.tablero{
+    
+}
+
+.btn{
+    margin-top: 50px;
+    margin-left: 50px;
+    padding: 5px;
+    font-size: 14pt;
+}
+
+.btn0{
+    margin-top: 50px;
+    margin-left: 160px;
+    padding: 5px;
+    font-size: 14pt;
+}
+
+h2 {
+    background-color: lightskyblue;
+    width: fit-content;
+    font-weight: bolder;
+    font-size: 25pt;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: italic;
+    text-transform: uppercase;
+    margin: 20px 0px 0px 10px;
+}
+
+img{
+    height: 100px;
+}
