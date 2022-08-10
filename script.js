@@ -1,10 +1,30 @@
-const piedra = document.getElementById('piedra')
-const papel = document.getElementById('papel')
-const tijera = document.getElementById('tijera')
-const reiniciar = document.getElementById('reiniciar')
-let titulo = document.getElementById('tituloPrincipal')
-let eleccionUsuario = document.createElement('div')
-let eleccionMaquina = document.createElement('div')
+const puntajeUsuario = 0;
+const puntajeComputadora = 0;
+let jugador = document.querySelector('.jugador')
+const puntosUsuario = document.getElementById('puntajeUsuario');
+const puntosComputadora = document.getElementById('puntajeComputadora');
+const tablero = document.querySelector('.tablero');
+const resultado = document.querySelector('.resultado');
+const piedra = document.getElementById('piedra');
+const papel = document.getElementById('papel');
+const tijera = document.getElementById('tijera');
+let nuevoDiv = document.createElement('div')
+
+class Jugador {
+    constructor(nombre) {
+        this.nombre = nombre;
+    }
+}
+
+let jugador1 = new Jugador(prompt('Ingresa tu nombre'))
+jugador.innerHTML = jugador1.nombre
+
+localStorage.setItem('Jugador', JSON.stringify(jugador1.nombre))
+let JugadorActivo = JSON.parse(localStorage.getItem('Jugador'))
+nuevoDiv.innerHTML = `<p>Esta jugando ` + JugadorActivo
+document.body.append(nuevoDiv)
+console.log('Esta jugando ' + JugadorActivo);
+
 
 function maquina() {
     const opciones = ['Piedra', 'Papel', 'Tijera'];
@@ -12,31 +32,33 @@ function maquina() {
     return opciones[opcRandom]
 }
 
-piedra.addEventListener('click', () => {
-    eleccionUsuario.innerHTML = '<h2>Elegiste piedra!</h2>'
-    document.body.append(eleccionUsuario)
-    eleccionMaquina.innerHTML = '<h2>La maquina eligio ' + maquina();
-    document.body.append(eleccionMaquina)
+piedra.addEventListener('click', ()=> {
+    resultado.innerHTML = `<h2>Elegiste piedra! La maquina eligio ` +maquina()
 })
 
-papel.addEventListener('click', () => {
-    eleccionUsuario.innerHTML = '<h2>Elegiste papel!</h2>'
-    document.body.append(eleccionUsuario)
-    eleccionMaquina.innerHTML = '<h2>La maquina eligio ' + maquina();
-    document.body.append(eleccionMaquina)
+papel.addEventListener('click', ()=> {
+    resultado.innerHTML = `<h2>Elegiste papel! La maquina eligio ` + maquina()
 })
 
-tijera.addEventListener('click', () => {
-    eleccionUsuario.innerHTML = '<h2>Elegiste tijera!</h2>'
-    document.body.append(eleccionUsuario)
-    eleccionMaquina.innerHTML = '<h2>La maquina eligio ' + maquina();
-    document.body.append(eleccionMaquina)
+tijera.addEventListener('click', ()=> {
+    resultado.innerHTML = `<h2>Elegiste tijera! La maquina eligio ` + maquina()
 })
 
 reiniciar.addEventListener('click', () => {
-    eleccionMaquina.remove();
-    eleccionUsuario.remove()
+    let jugador2 = new Jugador(prompt('Ingresa tu nombre'))
+    jugador.innerHTML = jugador2.nombre
+    localStorage.setItem('Jugador2', JSON.stringify(jugador2.nombre))
+    let JugadorActivo = JSON.parse(localStorage.getItem('Jugador2'))
+    nuevoDiv.innerHTML = `<p>Esta jugando ` + JugadorActivo
+    document.body.append(nuevoDiv)
+    console.log('Esta jugando ' + JugadorActivo);
+    resultado.innerHTML = `<h3>Elegi una opcion!</h3>`
 })
+
+
+
+
+
 
 
 
