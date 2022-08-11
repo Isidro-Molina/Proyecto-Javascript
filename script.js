@@ -4,7 +4,7 @@ let jugador = document.querySelector('.jugador')
 const puntosUsuario = document.getElementById('puntajeUsuario');
 const puntosComputadora = document.getElementById('puntajeComputadora');
 const tablero = document.querySelector('.tablero');
-const resultado = document.querySelector('.resultado');
+const eleccion = document.querySelector('.eleccion');const resultado = document.querySelector('.resultado')
 const piedra = document.getElementById('piedra');
 const papel = document.getElementById('papel');
 const tijera = document.getElementById('tijera');
@@ -20,6 +20,7 @@ let jugador1 = new Jugador(prompt('Ingresa tu nombre'))
 jugador.innerHTML = jugador1.nombre
 
 localStorage.setItem('Jugador', JSON.stringify(jugador1.nombre))
+
 let JugadorActivo = JSON.parse(localStorage.getItem('Jugador'))
 nuevoDiv.innerHTML = `<p>Esta jugando ` + JugadorActivo
 document.body.append(nuevoDiv)
@@ -32,16 +33,63 @@ function maquina() {
     return opciones[opcRandom]
 }
 
+
+function juego(eleccionUsuario) {
+    const eleccionMaquina = maquina();
+    console.log('el usuario eligio ' +eleccionUsuario);
+    console.log('La maquina eligio ' +eleccionMaquina);
+    eleccion.innerHTML = `<h2>Elegiste ${eleccionUsuario}! La maquina eligio ${eleccionMaquina}`
+
+    switch (eleccionUsuario) {
+        case 'Piedra':
+            if (eleccionMaquina == 'Tijera') {
+                console.log('Ganaste');
+                resultado.innerHTML = `<h6 class="ganar">Ganaste!</h6>`
+            } else if (eleccionMaquina == 'Piedra') {
+                console.log('Empate');
+                resultado.innerHTML = `<h6 class="empatar">Empate!</h6>`
+            } else if (eleccionMaquina == 'Papel') {
+                console.log('Perdiste');
+                resultado.innerHTML = `<h6 class="perder">Perdiste!</h6>`
+            }
+            break
+        case 'Papel':
+            if (eleccionMaquina == 'Piedra') {
+                console.log('Ganaste');
+                resultado.innerHTML = `<h6 class="ganar">Ganaste!</h6>`
+            } else if (eleccionMaquina == 'Papel') {
+                console.log('Empate');
+                resultado.innerHTML = `<h6 class="empatar">Empate!</h6>`
+            } else if (eleccionMaquina == 'Tijera') {
+                console.log('Perdiste');
+                resultado.innerHTML = `<h6 class="perder">Perdiste!</h6>`
+            }
+            break
+        case 'Tijera':
+            if (eleccionMaquina == 'Papel') {
+                console.log('Ganaste');
+                resultado.innerHTML = `<h6 class="ganar">Ganaste!</h6>`
+            } else if (eleccionMaquina == 'Tijera') {
+                console.log('Empate');
+                resultado.innerHTML = `<h6 class="empatar">Empate!</h6>`
+            } else if (eleccionMaquina == 'Piedra') {
+                console.log('Perdiste');
+                resultado.innerHTML = `<h6 class="perder">Perdiste!</h6>`
+            }
+    }
+}
+
+
 piedra.addEventListener('click', ()=> {
-    resultado.innerHTML = `<h2>Elegiste piedra! La maquina eligio ` +maquina()
+    juego('Piedra')
 })
 
 papel.addEventListener('click', ()=> {
-    resultado.innerHTML = `<h2>Elegiste papel! La maquina eligio ` + maquina()
+    juego('Papel')
 })
 
 tijera.addEventListener('click', ()=> {
-    resultado.innerHTML = `<h2>Elegiste tijera! La maquina eligio ` + maquina()
+    juego('Tijera')
 })
 
 reiniciar.addEventListener('click', () => {
@@ -52,7 +100,7 @@ reiniciar.addEventListener('click', () => {
     nuevoDiv.innerHTML = `<p>Esta jugando ` + JugadorActivo
     document.body.append(nuevoDiv)
     console.log('Esta jugando ' + JugadorActivo);
-    resultado.innerHTML = `<h3>Elegi una opcion!</h3>`
+    eleccion.innerHTML = `<h3>Elegi una opcion!</h3>`
 })
 
 
