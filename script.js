@@ -17,16 +17,25 @@ class Jugador {
     }
 }
 
-let jugador1 = new Jugador(prompt('Ingresa tu nombre'))
-jugador.innerHTML = jugador1.nombre
+Swal.fire({
+    title: 'Bienvenido!',
+    text: 'Ingresa tu nombre',
+    input: 'text',
+    preConfirm: (player) => {
+        return player;
+    }
+}).then((result) => {
+    if (result.value != null) {
+        let jugador1 = new Jugador (result.value)
+        jugador.innerHTML = jugador1.nombre
+        localStorage.setItem('Jugador', JSON.stringify(jugador1.nombre))
 
-localStorage.setItem('Jugador', JSON.stringify(jugador1.nombre))
-
-let JugadorActivo = JSON.parse(localStorage.getItem('Jugador'))
-nuevoDiv.innerHTML = `<p>Esta jugando ` + JugadorActivo
-document.body.append(nuevoDiv)
-console.log('Esta jugando ' + JugadorActivo);
-
+        let JugadorActivo = JSON.parse(localStorage.getItem('Jugador'))
+        nuevoDiv.innerHTML = `<p>Esta jugando ` + JugadorActivo
+        document.body.append(nuevoDiv)
+        console.log('Esta jugando ' + JugadorActivo);
+    }
+})
 
 function maquina() {
     const opciones = ['Piedra', 'Papel', 'Tijera'];
@@ -96,13 +105,27 @@ tijera.addEventListener('click', () => {
     juego('Tijera')
 })
 
+
 reiniciar.addEventListener('click', () => {
-    let jugador2 = new Jugador(prompt('Ingresa tu nombre'))
-    jugador.innerHTML = jugador2.nombre
-    localStorage.setItem('Jugador2', JSON.stringify(jugador2.nombre))
-    let JugadorActivo = JSON.parse(localStorage.getItem('Jugador2'))
-    nuevoDiv.innerHTML = `<p>Esta jugando ` + JugadorActivo
-    document.body.append(nuevoDiv)
-    console.log('Esta jugando ' + JugadorActivo);
-    eleccion.innerHTML = `<h3>Elegi una opcion!</h3>`
+    Swal.fire({
+        title: 'Bienvenid@!',
+        text: 'Ingresa tu nombre',
+        input: 'text',
+        preConfirm: (player) => {
+            return player;
+        }
+    }).then((result) => {
+        if (result.value != null) {
+            let jugador2 = new Jugador (result.value)
+            jugador.innerHTML = jugador2.nombre
+            localStorage.setItem('Jugador2', JSON.stringify(jugador2.nombre))
+
+            let JugadorActivo = JSON.parse(localStorage.getItem('Jugador2'))
+            nuevoDiv.innerHTML = `<p>Esta jugando ` + JugadorActivo
+            document.body.append(nuevoDiv)
+            console.log('Esta jugando ' + JugadorActivo);
+            eleccion.innerHTML = `<h3>Elegi una opcion!</h3>`
+        }
+    })
 })
+
