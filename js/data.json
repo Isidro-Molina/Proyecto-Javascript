@@ -1,0 +1,26 @@
+[
+    {
+        "nombre": "Pepe",
+        "puntaje": 20
+    },
+    {
+        "nombre": "Luis",
+        "puntaje": 12
+    },
+    {
+        "nombre": "Pancho",
+        "puntaje": 26
+    },
+    {
+        "nombre": "Jose",
+        "puntaje": 7
+    },
+    {
+        "nombre": "Ricky",
+        "puntaje": 14
+    },
+    {
+        "nombre": "Lalo",
+        "puntaje": 10
+    }
+]

@@ -1,5 +1,5 @@
-const puntajeUsuario = 0;
-const puntajeComputadora = 0;
+let puntajeUsuario = 0;
+let puntajeComputadora = 0;
 let jugador = document.querySelector('.jugador')
 const puntosUsuario = document.getElementById('puntajeUsuario');
 const puntosComputadora = document.getElementById('puntajeComputadora');
@@ -26,7 +26,7 @@ Swal.fire({
     }
 }).then((result) => {
     if (result.value != null) {
-        let jugador1 = new Jugador (result.value)
+        let jugador1 = new Jugador(result.value)
         jugador.innerHTML = jugador1.nombre
         localStorage.setItem('Jugador', JSON.stringify(jugador1.nombre))
 
@@ -43,6 +43,17 @@ function maquina() {
     return opciones[opcRandom]
 }
 
+function ganar() {
+    puntajeUsuario++;
+    puntosUsuario.innerHTML = puntajeUsuario;
+    puntosComputadora.innerHTML = puntajeComputadora;
+}
+
+function perder() {
+    puntajeComputadora++;
+    puntosComputadora.innerHTML = puntajeComputadora;
+    puntosUsuario.innerHTML = puntajeUsuario;
+}
 
 function juego(eleccionUsuario) {
     const eleccionMaquina = maquina();
@@ -58,12 +69,35 @@ function juego(eleccionUsuario) {
 
             if (eleccionMaquina == 'Tijera') {
                 resultado.innerHTML = `<h6 class="ganar">Ganaste!</h6>`
+                document.getElementById('piedra').classList.add('gano');
+                document.getElementById('tijera').classList.add('perdio');
+                setTimeout(() => {
+                    document.getElementById('piedra').classList.remove('gano')
+                }, 700)
+                setTimeout(() => {
+                    document.getElementById('tijera').classList.remove('perdio')
+                }, 700)
+                ganar()
             } else if (eleccionMaquina == 'Piedra') {
                 resultado.innerHTML = `<h6 class="empatar">Empate!</h6>`
+                document.getElementById('piedra').classList.add('empato')
+                setTimeout(() => {
+                    document.getElementById('piedra').classList.remove('empato')
+                }, 700)
             } else if (eleccionMaquina == 'Papel') {
                 resultado.innerHTML = `<h6 class="perder">Perdiste!</h6>`
+                document.getElementById('piedra').classList.add('perdio')
+                document.getElementById('papel').classList.add('gano')
+                setTimeout(() => {
+                    document.getElementById('piedra').classList.remove('perdio')
+                }, 700)
+                setTimeout(() => {
+                    document.getElementById('papel').classList.remove('gano')
+                }, 700)
+                perder()
             }
-            break
+            break;
+
         case 'Papel':
             eleccionMaquina == 'Piedra' && console.log('Ganaste!!');
             eleccionMaquina == 'Papel' && console.log('Empate.');
@@ -71,12 +105,35 @@ function juego(eleccionUsuario) {
 
             if (eleccionMaquina == 'Piedra') {
                 resultado.innerHTML = `<h6 class="ganar">Ganaste!</h6>`
+                document.getElementById('papel').classList.add('gano');
+                document.getElementById('piedra').classList.add('perdio');
+                setTimeout(() => {
+                    document.getElementById('papel').classList.remove('gano')
+                }, 700)
+                setTimeout(() => {
+                    document.getElementById('piedra').classList.remove('perdio')
+                }, 700)
+                ganar();
             } else if (eleccionMaquina == 'Papel') {
                 resultado.innerHTML = `<h6 class="empatar">Empate!</h6>`
+                document.getElementById('papel').classList.add('empato')
+                setTimeout(() => {
+                    document.getElementById('papel').classList.remove('empato')
+                }, 700)
             } else if (eleccionMaquina == 'Tijera') {
                 resultado.innerHTML = `<h6 class="perder">Perdiste!</h6>`
+                document.getElementById('papel').classList.add('perdio')
+                document.getElementById('tijera').classList.add('gano')
+                setTimeout(() => {
+                    document.getElementById('papel').classList.remove('perdio')
+                }, 700)
+                setTimeout(() => {
+                    document.getElementById('tijera').classList.remove('gano')
+                }, 700)
+                perder()
             }
-            break
+            break;
+
         case 'Tijera':
             eleccionMaquina == 'Papel' && console.log('Ganaste!!');
             eleccionMaquina == 'Tijera' && console.log('Empate.');
@@ -84,11 +141,34 @@ function juego(eleccionUsuario) {
 
             if (eleccionMaquina == 'Papel') {
                 resultado.innerHTML = `<h6 class="ganar">Ganaste!</h6>`
+                document.getElementById('tijera').classList.add('gano');
+                document.getElementById('papel').classList.add('perdio');
+                setTimeout(() => {
+                    document.getElementById('tijera').classList.remove('gano')
+                }, 700)
+                setTimeout(() => {
+                    document.getElementById('papel').classList.remove('perdio')
+                }, 700)
+                ganar()
             } else if (eleccionMaquina == 'Tijera') {
                 resultado.innerHTML = `<h6 class="empatar">Empate!</h6>`
+                document.getElementById('tijera').classList.add('empato')
+                setTimeout(() => {
+                    document.getElementById('tijera').classList.remove('empato')
+                }, 700)
             } else if (eleccionMaquina == 'Piedra') {
                 resultado.innerHTML = `<h6 class="perder">Perdiste!</h6>`
+                document.getElementById('tijera').classList.add('perdio')
+                document.getElementById('piedra').classList.add('gano')
+                setTimeout(() => {
+                    document.getElementById('tijera').classList.remove('perdio')
+                }, 700)
+                setTimeout(() => {
+                    document.getElementById('piedra').classList.remove('gano')
+                }, 700)
+                perder()
             }
+            break;
     }
 }
 
@@ -107,6 +187,12 @@ tijera.addEventListener('click', () => {
 
 
 reiniciar.addEventListener('click', () => {
+    puntajeComputadora = 0;
+    puntajeUsuario = 0
+    puntosComputadora.innerHTML = puntajeComputadora
+    puntosUsuario.innerHTML = puntajeUsuario
+
+
     Swal.fire({
         title: 'Bienvenid@!',
         text: 'Ingresa tu nombre',
@@ -116,7 +202,7 @@ reiniciar.addEventListener('click', () => {
         }
     }).then((result) => {
         if (result.value != null) {
-            let jugador2 = new Jugador (result.value)
+            let jugador2 = new Jugador(result.value)
             jugador.innerHTML = jugador2.nombre
             localStorage.setItem('Jugador2', JSON.stringify(jugador2.nombre))
 
@@ -128,4 +214,3 @@ reiniciar.addEventListener('click', () => {
         }
     })
 })
-

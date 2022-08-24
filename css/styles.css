@@ -62,14 +62,55 @@ h1 {
     width: fit-content;
 }
 
-.resultado h4{
+h2 {
+    background-color: lightskyblue;
+    width: fit-content;
+    font-weight: bolder;
+    font-size: 25pt;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: italic;
+    text-transform: uppercase;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.resultado h4 {
     text-align: center;
     font-size: 18pt;
     font-weight: bold;
     margin: 0 auto;
     margin-top: 20px;
     width: fit-content;
-    visibility: hidden;
+}
+
+.ganar {
+    background-color: lightgreen;
+    text-align: center;
+    font-size: 18pt;
+    font-weight: bold;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.empatar {
+    background-color: rgb(249, 249, 105);
+    text-align: center;
+    font-size: 18pt;
+    font-weight: bold;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.perder {
+    background-color: lightcoral;
+    text-align: center;
+    font-size: 18pt;
+    font-weight: bold;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: fit-content;
 }
 
 .opciones {
@@ -96,11 +137,11 @@ h1 {
     cursor: pointer;
 }
 
-.opcion:hover{
+.opcion:hover {
     background-color: lightslategray;
 }
 
-.btn00{
+.btn00 {
     margin: 40px auto;
     border: 2px solid;
     width: fit-content;
@@ -112,59 +153,40 @@ h1 {
     border: none;
 }
 
-h2 {
-    background-color: lightskyblue;
-    width: fit-content;
-    font-weight: bolder;
-    font-size: 25pt;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-style: italic;
-    text-transform: uppercase;
-    margin: 0 auto;
-    margin-top: 30px;
+.gano {
+    background-color: rgb(45, 187, 45);
 }
 
-.ganar{
-    background-color: lightgreen;
-    text-align: center;
-    font-size: 18pt;
-    font-weight: bold;
-    margin: 0 auto;
-    margin-top: 20px;
-    width: fit-content;
+.perdio {
+    background-color: rgb(192, 18, 18);
 }
 
-.empatar{
-    background-color: rgb(249, 249, 105);
-    text-align: center;
-    font-size: 18pt;
-    font-weight: bold;
-    margin: 0 auto;
-    margin-top: 20px;
-    width: fit-content;
+.empato {
+    background-color: rgb(239, 239, 32);
 }
 
-.perder{
-    background-color: lightcoral;
-    text-align: center;
-    font-size: 18pt;
-    font-weight: bold;
-    margin: 0 auto;
-    margin-top: 20px;
-    width: fit-content;
+.gano:hover {
+    background-color: rgb(29, 163, 29);
+}
+
+.perdio:hover {
+    background-color: rgb(192, 18, 18);
+}
+
+.empato:hover {
+    background-color: rgb(239, 239, 32);
 }
 
 
-
-p{
+p {
     background-color: lightsalmon;
     width: fit-content;
     font-weight: bolder;
     font-size: 20pt;
     font-family: Impact,
-    Haettenschweiler,
-    'Arial Narrow Bold',
-    sans-serif;
+        Haettenschweiler,
+        'Arial Narrow Bold',
+        sans-serif;
     font-style: italic;
     text-transform: uppercase;
     margin: 0 auto;
