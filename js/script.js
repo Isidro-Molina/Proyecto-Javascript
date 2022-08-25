@@ -10,6 +10,7 @@ const piedra = document.getElementById('piedra');
 const papel = document.getElementById('papel');
 const tijera = document.getElementById('tijera');
 let nuevoDiv = document.createElement('div')
+let tabla = document.querySelector('#tabla');
 
 class Jugador {
     constructor(nombre) {
@@ -31,7 +32,7 @@ Swal.fire({
         localStorage.setItem('Jugador', JSON.stringify(jugador1.nombre))
 
         let JugadorActivo = JSON.parse(localStorage.getItem('Jugador'))
-        nuevoDiv.innerHTML = `<p>Esta jugando ` + JugadorActivo
+        nuevoDiv.innerHTML = `<h6>Esta jugando ` + JugadorActivo
         document.body.append(nuevoDiv)
         console.log('Esta jugando ' + JugadorActivo);
     }
@@ -207,10 +208,26 @@ reiniciar.addEventListener('click', () => {
             localStorage.setItem('Jugador2', JSON.stringify(jugador2.nombre))
 
             let JugadorActivo = JSON.parse(localStorage.getItem('Jugador2'))
-            nuevoDiv.innerHTML = `<p>Esta jugando ` + JugadorActivo
+            nuevoDiv.innerHTML = `<h6>Esta jugando ` + JugadorActivo
             document.body.append(nuevoDiv)
             console.log('Esta jugando ' + JugadorActivo);
             eleccion.innerHTML = `<h3>Elegi una opcion!</h3>`
         }
     })
 })
+
+
+function crearTabla(array) {
+    array.forEach((jugadores) => {
+        const tablon = `<p>${jugadores.nombre} con un puntaje de ${jugadores.puntaje}</p>`
+    tabla.innerHTML += tablon
+    })
+}
+
+async function bringData() {
+    const response = await fetch('./js/data.json');
+    const data = await response.json();
+    crearTabla(data)
+}
+
+bringData()

@@ -1,26 +1,26 @@
 [
     {
         "nombre": "Pepe",
-        "puntaje": 20
+        "puntaje": "20 - 6"
     },
     {
         "nombre": "Luis",
-        "puntaje": 12
+        "puntaje": "12 - 4"
     },
     {
         "nombre": "Pancho",
-        "puntaje": 26
+        "puntaje": "26 - 10"
     },
     {
         "nombre": "Jose",
-        "puntaje": 7
+        "puntaje": "7 - 1"
     },
     {
         "nombre": "Ricky",
-        "puntaje": 14
+        "puntaje": "14 - 8"
     },
     {
         "nombre": "Lalo",
-        "puntaje": 10
+        "puntaje": "10 - 5"
     }
 ]
