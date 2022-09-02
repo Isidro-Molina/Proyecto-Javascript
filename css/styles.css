@@ -209,3 +209,24 @@ h6 {
     padding: 10px;
     font-size: 14pt;
 }
+
+footer {
+    margin: 0 auto;
+    margin-top: 40px;
+    padding: 10px;
+    border: 2px solid;
+    text-align: center;
+    width: 100vw;
+    background-color: lightskyblue;
+}
+
+footer p {
+    margin: 0 auto;
+    padding: 4px;
+    font-size: 16pt;
+    font-family: Impact,
+        Haettenschweiler,
+        'Arial Narrow Bold',
+        sans-serif;
+    text-transform: uppercase;
+}

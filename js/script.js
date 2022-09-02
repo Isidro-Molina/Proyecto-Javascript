@@ -9,7 +9,6 @@ const resultado = document.querySelector('.resultado')
 const piedra = document.getElementById('piedra');
 const papel = document.getElementById('papel');
 const tijera = document.getElementById('tijera');
-let nuevoDiv = document.createElement('div')
 let tabla = document.querySelector('#tabla');
 
 class Jugador {
@@ -32,9 +31,7 @@ Swal.fire({
         localStorage.setItem('Jugador', JSON.stringify(jugador1.nombre))
 
         let JugadorActivo = JSON.parse(localStorage.getItem('Jugador'))
-        nuevoDiv.innerHTML = `<h6>Esta jugando ` + JugadorActivo
-        document.body.append(nuevoDiv)
-        console.log('Esta jugando ' + JugadorActivo);
+        document.getElementById('active').innerHTML = `<h6>Esta jugando ` + JugadorActivo
     }
 })
 
@@ -58,15 +55,10 @@ function perder() {
 
 function juego(eleccionUsuario) {
     const eleccionMaquina = maquina();
-    console.log('el usuario eligio ' + eleccionUsuario);
-    console.log('La maquina eligio ' + eleccionMaquina);
     eleccion.innerHTML = `<h2>Elegiste ${eleccionUsuario}! La maquina eligio ${eleccionMaquina}`
 
     switch (eleccionUsuario) {
         case 'Piedra':
-            eleccionMaquina == 'Tijera' && console.log('Ganaste!!');
-            eleccionMaquina == 'Piedra' && console.log('Empate.');
-            eleccionMaquina == 'Papel' && console.log('Perdiste!!!');
 
             if (eleccionMaquina == 'Tijera') {
                 resultado.innerHTML = `<h6 class="ganar">Ganaste!</h6>`
@@ -100,9 +92,6 @@ function juego(eleccionUsuario) {
             break;
 
         case 'Papel':
-            eleccionMaquina == 'Piedra' && console.log('Ganaste!!');
-            eleccionMaquina == 'Papel' && console.log('Empate.');
-            eleccionMaquina == 'Tijera' && console.log('Perdiste!!!');
 
             if (eleccionMaquina == 'Piedra') {
                 resultado.innerHTML = `<h6 class="ganar">Ganaste!</h6>`
@@ -136,9 +125,6 @@ function juego(eleccionUsuario) {
             break;
 
         case 'Tijera':
-            eleccionMaquina == 'Papel' && console.log('Ganaste!!');
-            eleccionMaquina == 'Tijera' && console.log('Empate.');
-            eleccionMaquina == 'Piedra' && console.log('Perdiste!!!');
 
             if (eleccionMaquina == 'Papel') {
                 resultado.innerHTML = `<h6 class="ganar">Ganaste!</h6>`
@@ -208,9 +194,7 @@ reiniciar.addEventListener('click', () => {
             localStorage.setItem('Jugador2', JSON.stringify(jugador2.nombre))
 
             let JugadorActivo = JSON.parse(localStorage.getItem('Jugador2'))
-            nuevoDiv.innerHTML = `<h6>Esta jugando ` + JugadorActivo
-            document.body.append(nuevoDiv)
-            console.log('Esta jugando ' + JugadorActivo);
+            document.getElementById('active').innerHTML = `<h6>Esta jugando ` + JugadorActivo
             eleccion.innerHTML = `<h3>Elegi una opcion!</h3>`
         }
     })
